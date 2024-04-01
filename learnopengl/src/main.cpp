@@ -77,7 +77,7 @@ int main()
     glfwSetCursorPosCallback(window, mouse_callback);
     // Creating a wrapper lambda to match the signatures
     glfwSetScrollCallback(
-        window, [](GLFWwindow *window, double xoffset, double yoffset) { camera.ProcessMouseScroll(yoffset, false); });
+        window, [](GLFWwindow *window, double xoffset, double yoffset) { camera.processMouseScroll(yoffset, false); });
 
     Shader shader("src/shader_src/vertex_shader.vs", "src/shader_src/fragment_shader.fs");
 
@@ -272,19 +272,19 @@ void processInput(GLFWwindow *window)
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(FORWARD, deltaTime);
+        camera.processKeyboard(FORWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(BACKWARD, deltaTime);
+        camera.processKeyboard(BACKWARD, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(LEFT, deltaTime);
+        camera.processKeyboard(LEFT, deltaTime);
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
-        camera.ProcessKeyboard(RIGHT, deltaTime);
+        camera.processKeyboard(RIGHT, deltaTime);
     }
 }
 
@@ -305,5 +305,5 @@ void mouse_callback(GLFWwindow *window, double xpos, double ypos)
     lastX = xpos;
     lastY = ypos;
 
-    camera.ProcessMouseMovement(xoffset, yoffset, true);
+    camera.processMouseMovement(xoffset, yoffset, true);
 }
